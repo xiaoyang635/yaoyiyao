@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div>
+	</div>
+	<script>
+		function rnd(n,m){
+			return Math.floor(Math.random()*(m-n)+n);
+		}
+		var oDiv = document.body.children[0];
+		if(window.DeviceMotionEvent){
+			//your code
+			window.addEventListener('devicemotion',function(ev){
+				//x y z
+				var acc = ev.accelerationIncludingGravity;
+				if(acc.x>15||acc.y>15||acc.z>15){
+					oDiv.style.background = 'rgb('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+')';
+				}
+			},false);
+		}else{
+			alert('sorry,Your device does not support gravity induction');
+		}
+	</script>
+</body>
+</html>
